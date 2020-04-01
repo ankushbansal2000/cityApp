@@ -1,0 +1,122 @@
+<div class="citywrap">
+<div class="mainWrap">
+    <div class="card-header-outer">
+      <div class="card-header headerWrap">
+        <div class="row">
+          <div class="col-xl-6">
+              <div class="headWrapParaVendor">
+            Vendor List</div>
+          </div>
+        <div class="col-xl-3">
+         <!--   <button class="btn btn-primary" (click)="export()">Export To Excel</button>-->
+   </div>
+          <div class="col-xl-3">
+            <a class="btn btn-primary" [routerLink]="['addvendor']" role="button"> Add Vendor</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="table-responsive">
+  
+      <table class="table table-sm table-bordered " id="vendor">
+        <thead>
+            <tr>
+                <th style="width: 120px"> Vendor Name</th>
+                <th style="width: 120px">Business Name</th>
+                <th style="width: 120px">Contact Number</th>
+                <th style="width: 150px">Alt Contact Number</th>
+                <th style="width: 120px" >Address</th>
+                <th style="width: 120px">House Number</th>
+                <th style="width: 120px">Lat Long</th>
+                <th style="width: 120px">Start Time</th>
+                <th style="width: 120px">End Time</th>
+                <th style="width: 120px">Working Days</th>
+                <th style="width: 120px">Pin Code</th>
+                <th style="width: 120px">City</th>
+                <th style="width: 150px">Range of Delivery</th>
+                <th style="width: 250px">Categories</th>
+                <th style="width: 120px">Password</th>
+                <th style="width: 120px">Lat</th>
+                <th style="width: 120px">Lng</th>
+                <th style="width: 50px">Edit</th>
+                <th style="width: 50px">Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="width: 120px">name </td>
+                <td style="width: 120px">businessName </td>
+                <td style="width: 120px">contactNumber </td>
+                <td style="width: 150px">altContactNumber </td>
+                <td style="width: 120px">address </td>
+                <td style="width: 120px">houseNumber </td>
+                <td style="width: 120px">latLong </td>
+                <td style="width: 120px">startTime </td>
+                <td style="width: 120px">endTime </td>
+                <td style="width: 120px">workingDays </td>
+                <td style="width: 120px">pincode </td>
+                <td style="width: 120px">city </td>
+                <td style="width: 150px">rangeOfDelivery </td>
+                <td style="width: 250px">
+                <tr style="width: 250px">
+                <td><img class="imageCategoryWrap" src="../../../assets/coder.jpg"></td>
+                <td>title</td>
+                <td>desc</td>
+                </tr>
+                <tr  style="width: 250px">
+                    <td><img class="imageCategoryWrap" src="../../../assets/coder.jpg"></td>
+                    <td>title</td>
+                    <td>desc</td>
+                    </tr>
+                </td>
+                <td style="width: 120px"> password </td>
+                <td style="width: 120px"> lat </td>
+                <td style="width: 120px"> lng </td>
+                <td style="width: 50px">
+                  <i title="Edit Vendor" [routerLink]="['editvendor',vendor.id]" class="fa fa-fw fa-edit"></i>
+                </td>
+                <td style="width: 50px">
+                  <i title="Delete Vendor" (click)="deleteVendor(vendor.id)" class="fa fa-fw fa-trash"></i>
+                </td>
+              </tr>
+          <tr *ngFor="let vendor of vendorlist">
+            <td style="width: 120px"> {{vendor.name}} </td>
+            <td style="width: 120px"> {{vendor.businessName}} </td>
+            <td style="width: 120px"> {{vendor.contactNumber}} </td>
+            <td style="width: 150px"> {{vendor.altContactNumber}} </td>
+            <td style="width: 120px"> {{vendor.address}} </td>
+            <td style="width: 120px"> {{vendor.houseNumber}} </td>
+            <td style="width: 120px"> {{vendor.latLong}} </td>
+            <td style="width: 120px"> {{vendor.startTime}} </td>
+            <td style="width: 120px"> {{vendor.endTime}} </td>
+            <td style="width: 120px"> {{vendor.workingDays}} </td>
+            <td style="width: 120px"> {{vendor.pincode}} </td>
+            <td style="width: 120px"> {{vendor.city}} </td>
+            <td style="width: 150px"> {{vendor.rangeOfDelivery}} </td>
+            <td style="width: 120px">
+            <tr *ngFor="let i of vendor.categories">
+            <td><img src="{{i.image}}"></td>
+            <td>{{i.title}}</td>
+            <td>{{i.desc}}</td>
+            </tr>
+            </td>
+            <td style="width: 120px"> {{vendor.password}} </td>
+            <td style="width: 120px"> {{vendor.lat}} </td>
+            <td style="width: 120px"> {{vendor.lng}} </td>
+            <td style="width: 50px">
+              <i title="Edit Vendor" [routerLink]="['editvendor',vendor.id]" class="fa fa-fw fa-edit"></i>
+            </td>
+            <td style="width: 50px">
+              <i title="Delete Vendor" (click)="deleteVendor(vendor.id)" class="fa fa-fw fa-trash"></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+   
+    </div>
+  </div></div>
+  
+  <div class="loading-box" *ngIf="isLoader">
+    <div class="loading"></div>
+  </div>

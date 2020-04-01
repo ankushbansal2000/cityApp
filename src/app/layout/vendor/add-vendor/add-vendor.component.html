@@ -1,0 +1,166 @@
+<div class="mainWrap">
+    <div class="headWrap">
+        <div class="titleHeadWrap">
+            {{_headerText}}
+        </div>
+        <div class="buttonHeadWrap">
+            <button class="btn btn-primary" (click)="goBack()">Go Back</button>
+        </div>
+    </div>
+    <div class="container">
+
+        <div class="mainDiv">
+            <form #addCity="ngForm" (ngSubmit)="save(vendorDetail)">
+                <div class="rowWrap">
+                    <div class="labelWrap">
+                        Name :
+                    </div>
+                    <div class="inputWrap">
+                        <input type="text" name="name" #name="ngModel" [(ngModel)]="vendorDetail.name"
+                            class="form-control">
+                    </div>
+                </div>
+
+                <div class="rowWrap">
+                    <div class="labelWrap">
+                        Buisness Name :
+                    </div>
+                    <div class="inputWrap">
+                        <input type="text" name="businessName" #businessName="ngModel"
+                            [(ngModel)]="vendorDetail.businessName" class="form-control">
+                    </div>
+                </div>
+
+                <div class="rowWrap">
+                    <div class="labelWrap">
+                        Contact Number :
+                    </div>
+                    <div class="inputWrap">
+                        <input type="text" name="contactNumber" #contactNumber="ngModel"
+                            [(ngModel)]="vendorDetail.contactNumber" class="form-control">
+                    </div>
+                </div>
+
+                <div class="rowWrap">
+                    <div class="labelWrap">
+                        Address :
+                    </div>
+                    <div class="inputWrap">
+                        <input type="text" name="address" #address="ngModel" [(ngModel)]="vendorDetail.address"
+                            class="form-control">
+                    </div>
+                </div>
+
+                <div class="rowWrap">
+                    <div class="labelWrap">
+                        Lat Long :
+                    </div>
+                    <div class="inputWrap">
+                        <input type="text" name="latLong" #latLong="ngModel" [(ngModel)]="vendorDetail.latLong"
+                            class="form-control">
+                    </div>
+                </div>
+                <div class="rowWrap">
+                    <div class="labelWrap">
+                        House Number :
+                    </div>
+                    <div class="inputWrap">
+                        <input type="text" name="houseNumber" #houseNumber="ngModel"
+                            [(ngModel)]="vendorDetail.houseNumber" class="form-control">
+                    </div>
+                </div>
+                <div class="rowWrap">
+                        <div class="labelWrap">
+                            Working Days :
+                        </div>
+                        <div class="inputWrap">
+                        <ng-multiselect-dropdown [placeholder]="'Select Working Days'"[(ngModel)]="vendorDetail.workingDays" [data]="dropdownList" [settings]="dropdownSettings"
+                            (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)" [ngModelOptions]="{standalone: true}">
+                        </ng-multiselect-dropdown>
+                        </div>
+                </div>
+                <div class="rowWrap">
+                    <div class="labelWrap">
+                        Start Time :
+                    </div>
+                    <div class="inputWrap">
+                        <input type="text" name="startTime" #startTime="ngModel" [(ngModel)]="vendorDetail.startTime"
+                            class="form-control">
+                    </div>
+                </div>
+                <div class="rowWrap">
+                    <div class="labelWrap">
+                        End Time :
+                    </div>
+                    <div class="inputWrap">
+                        <input type="text" name="endTime" #endTime="ngModel" [(ngModel)]="vendorDetail.endTime"
+                            class="form-control">
+                    </div>
+                </div>
+                <div class="rowWrap">
+                    <div class="labelWrap">
+                        Pin Code :
+                    </div>
+                    <div class="inputWrap">
+                        <input type="text" name="pincode" #pincode="ngModel" [(ngModel)]="vendorDetail.pincode"
+                            class="form-control">
+                    </div>
+                </div>
+                <div class="rowWrap">
+                    <div class="labelWrap">
+                        City :
+                    </div>
+                    <div class="inputWrap">
+                        <input type="text" name="city" #city="ngModel" [(ngModel)]="vendorDetail.city"
+                            class="form-control">
+                    </div>
+                </div>
+
+                <div class="rowWrap">
+                    <div class="labelWrap">
+                        Range of Delivery :
+                    </div>
+                    <div class="inputWrap">
+                        <input type="text" name="rangeOfDelivery" #rangeOfDelivery="ngModel"
+                            [(ngModel)]="vendorDetail.rangeOfDelivery" class="form-control">
+                    </div>
+                </div>
+                <div class="rowWrap">
+                    <div class="labelWrap">
+                        Password :
+                    </div>
+                    <div class="inputWrap">
+                        <input type="text" name="password" #password="ngModel" [(ngModel)]="vendorDetail.password"
+                            class="form-control">
+                    </div>
+                </div>
+
+                <div class="rowWrap">
+                    <div class="labelWrap">
+                        lat :
+                    </div>
+                    <div class="inputWrap">
+                        <input type="text" name="lat" #lat="ngModel" [(ngModel)]="vendorDetail.lat"
+                            class="form-control">
+                    </div>
+                </div>
+
+                <div class="rowWrap">
+                    <div class="labelWrap">
+                        lng :
+                    </div>
+                    <div class="inputWrap">
+                        <input type="text" name="lng" #lng="ngModel" [(ngModel)]="vendorDetail.lng"
+                            class="form-control">
+                    </div>
+                </div>
+
+                <div class="buttonWrap">
+                    <div class="buttonWrapMemory">
+                        <button class="btn btn-primary">{{_buttonText}}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

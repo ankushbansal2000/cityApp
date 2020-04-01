@@ -1,0 +1,19 @@
+.mainDivWrap{
+    float: left;
+    background-color: #ffffffe0;
+    width: 100%;
+    border-bottom: 1px solid #8080802e;
+    position: fixed;
+    top: 0px;
+    z-index: 2;
+}
+
+.mainDivWrap h3{
+    float: left;
+    width: 15%;
+    font-size: 24px;
+    color: #000000;
+    padding: 13px;
+    margin: 0px;
+    border-right: 1px solid #8080802e;
+}

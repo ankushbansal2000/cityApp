@@ -1,0 +1,25 @@
+<div class="loginpage">
+        <div class="loginimage">
+          <img src="../../assets/mukandlogo.png" width="225px" height="140px">
+        </div>
+      
+        <div class="loginform">
+          <form>
+            <div class="form-group">
+              <label for="username">Device ID</label>
+              <input  name="deviceToken" 
+              type="text" class="form-control"
+                #deviceToken="ngModel" [(ngModel)]="loginDetail.deviceToken">
+            </div>
+
+            <div class="form-group">
+              <div class="buttonWrap">
+                <button type="submit" (click)="onLogin(loginDetail)" class="btn btn-primary buttontagWrap">Login</button>
+            </div>
+          </div>
+
+          </form>
+      
+        </div>
+      </div>
+      

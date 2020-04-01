@@ -1,0 +1,55 @@
+<div class="citywrap">
+        <div class="mainWrap">
+            <div class="card-header-outer">
+              <div class="card-header headerWrap">
+                <div class="row">
+                  <div class="col-xl-6">
+                      <div class="headWrapParaVendor">
+                    City List</div>
+                  </div>
+                <div class="col-xl-3">
+                 <!--   <button class="btn btn-primary" (click)="export()">Export To Excel</button>-->
+           </div>
+                  <div class="col-xl-3">
+                    <a class="btn btn-primary" [routerLink]="['addcity']" role="button"> Add City</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+            <div class="table-responsive">
+          
+              <table class="table table-sm table-bordered " id="vendor">
+                <thead>
+                  <tr>
+                    <th style="width:150px"> City Name</th>
+                    <th style="width:150px">PinCode</th>
+                    <th style="width: 150px">State</th>
+                    <th style="width: 150px">Launched</th>
+                    <th style="width: 50px" >Edit</th>
+                    <th style="width: 70px">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let city of cityDetail">
+                    <td style="width:150px"> {{city.name}} </td>
+                    <td style="width:150px"> {{city.pincode}} </td>
+                    <td style="width: 150px"> {{city.state}} </td>
+                  <td style="width: 150px;">{{city.launched}}</td>
+                    <td style="width: 50px">
+                      <i title="Edit City" [routerLink]="['editcity',city.id]" class="fa fa-fw fa-edit"></i>
+                    </td>
+                    <td style="width: 70px">
+                      <i title="Delete City" (click)="deleteCity(city.id)" class="fa fa-fw fa-trash"></i>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+           
+            </div>
+          </div></div>
+          
+          <div class="loading-box" *ngIf="isLoader">
+            <div class="loading"></div>
+          </div>
+        

@@ -1,0 +1,66 @@
+<div class="mainWrap">
+        <div class="headWrap">
+                <div class="titleHeadWrap">
+                    {{_headerText}}
+                </div>
+                <div class="buttonHeadWrap">
+                    <button class="btn btn-primary" (click)="goBack()" >Go Back</button>
+                </div>
+            </div>
+    <div class="container">
+       
+        <div class="mainDiv">
+                <form #addCity="ngForm" (ngSubmit)="save()">
+            <div class="rowWrap">
+                <div class="labelWrap">
+                   City Name :
+                </div>
+                <div class="inputWrap">
+                    <input type="text" name="name" #name="ngModel" [(ngModel)]="cityDetail.name"  class="form-control">
+                </div>
+            </div>
+
+            <div class="rowWrap">
+                <div class="labelWrap">
+                   Pin Code :
+                </div>
+                <div class="inputWrap">
+                    <input type="text"name="pincode" #pincode="ngModel" [(ngModel)]="cityDetail.pincode"  class="form-control">
+                </div>
+            </div>
+
+            <div class="rowWrap">
+                <div class="labelWrap">
+                   State :
+                </div>
+                <div class="inputWrap">
+                    <input type="text" name="state" #state="ngModel" [(ngModel)]="cityDetail.state"  class="form-control">
+                </div>
+            </div>
+
+            <div class="rowWrap">
+                    <div class="labelWrap">
+                        Launched <span style="color: red">*</span>
+                    </div>
+                    <div class="InformationSelectGetWrap">
+    
+                        <select class="browser-default custom-select"
+                        name="student_category" [(ngModel)]="cityDetail.launched">
+                            <option>
+                                Select
+                            </option>
+                            <option value="True">True</option>
+                            <option value="False">False</option>
+                        </select>
+                    </div>
+                </div>
+
+            <div class="buttonWrap">
+                <div class="buttonWrapMemory">
+                <button class="btn btn-primary" [disabled]="!addCity.form.valid" >{{_buttonText}}</button>
+            </div>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>

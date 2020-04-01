@@ -1,0 +1,82 @@
+<div class="mainWrap">
+        <div class="headWrap">
+                <div class="titleHeadWrap">
+                    {{_headerText}}
+                </div>
+                <div class="buttonHeadWrap">
+                    <button class="btn btn-primary" (click)="goBack()" >Go Back</button>
+                </div>
+            </div>
+    <div class="container">
+       
+        <div class="mainDiv">
+                <form #addCity="ngForm" (ngSubmit)="save()">
+            <div class="rowWrap"> 
+                <div class="labelWrap">
+                Title :
+                </div>
+                <div class="inputWrap">
+                    <input type="text" name="title" #title="ngModel" (change)="onTitleChanges($event)" [(ngModel)]="masterCategoryDetail.title" class="form-control">
+                </div>
+            </div>
+
+            <div class="rowWrap">
+                <div class="labelWrap">
+                   Sub Title:
+                </div>
+                <div class="inputWrap">
+                    <input type="text" name="subTitle" #subTitle="ngModel" (change)="onSubTitleChanges($event)" [(ngModel)]="masterCategoryDetail.subTitle" class="form-control">
+                </div>
+            </div>
+
+            <div class="rowWrap">
+                <div class="labelWrap">
+                   Description :
+                </div>
+                <div class="inputWrap">
+                    <input type="text" name="description" #description="ngModel" (change)="onDescriptionChanges($event)" [(ngModel)]="masterCategoryDetail.description" class="form-control">
+                </div>
+            </div>
+
+            <div class="rowWrap">
+                    <div class="labelWrap">
+                       Entity :
+                    </div>
+                    <div class="inputWrap">
+                        <input type="text" name="entity" #entity="ngModel" (change)="onEntityChanges($event)" [(ngModel)]="masterCategoryDetail.entity" class="form-control">
+                    </div>
+                </div>
+                <div class="rowWrap">
+                    <div class="labelWrap">
+                       Icon :
+                    </div>
+                    <div class="inputWrap">
+                        <input type="file" name="iconUrl" #iconUrl="ngModel" (change)="onIconUrlChanges($event)" [(ngModel)]="masterCategoryDetail.iconUrl" class="form-control">
+                    </div>
+                </div>
+                <div class="rowWrap">
+                    <div class="labelWrap">
+                       Background Image :
+                    </div>
+                    <div class="inputWrap">
+                        <input type="file" name="bgImage" #bgImage="ngModel" (change)="onbgImageChanges($event)" [(ngModel)]="masterCategoryDetail.bgImage" class="form-control">
+                    </div>
+                </div>
+                <div class="rowWrap">
+                        <div class="labelWrap">
+                           Master JSON Key :
+                        </div>
+                        <div class="inputWrap">
+                            <input type="text" name="master_json_key" (change)="onMasterJsonChanges($event)" #master_json_key="ngModel" [(ngModel)]="masterCategoryDetail.master_json_key" class="form-control">
+                        </div>
+                    </div>
+
+            <div class="buttonWrap">
+                <div class="buttonWrapMemory">
+                <button class="btn btn-primary">{{_buttonText}}</button>
+            </div>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>

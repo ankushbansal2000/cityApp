@@ -1,0 +1,55 @@
+.mainWrap {
+    float: left;
+    overflow: hidden;
+    max-width: 100%;
+    padding: 10px;
+}
+.mainDiv {
+    float: left;
+    width: 100%;
+}
+.rowWrap {
+    float: left;
+    width: 50%;
+    padding: 15px;
+}
+.labelWrap {
+    float: left;
+    margin-top: 7px;
+    padding-right: 10px;
+    text-align: right;
+    width: 32%;
+}
+.inputWrap {
+    float: left;
+    width: 50%;
+}
+.buttonWrap {
+    float: left;
+    width: 100%;
+    padding-top: 10px; 
+}
+.buttonWrapMemory {
+    width: 10%;
+    margin: auto;
+}
+.buttonWrap button {
+    width: 100%;
+    float: left;
+}
+
+.headWrap {
+    float: left;
+    padding: 10px;
+    background-color: white;
+    width: 100%;
+}
+.titleHeadWrap {
+    float: left;
+    width: 50%;
+    font-size: 20px;
+}
+.buttonHeadWrap {
+    float: right;
+    width: 20%;
+}
