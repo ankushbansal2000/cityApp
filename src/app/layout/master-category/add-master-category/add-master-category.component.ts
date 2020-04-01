@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CommonService } from 'src/app/framework/common.service';
+import { CommonServices } from 'src/app/framework/common.service';
 import { BaseComponent } from 'src/app/framework/BaseCompo';
 import { CheckUtil } from 'src/app/framework/Utils/CheckUtils';
 import { ApiGenerator } from 'src/app/framework/ApiGenerator';
@@ -11,13 +11,14 @@ import { TaskCode } from 'src/app/framework/global';
   selector: 'app-add-master-category',
   templateUrl: './add-master-category.component.html',
   styleUrls: ['./add-master-category.component.css'],
-  providers: [CommonService]
+  providers: [CommonServices]
 })
 export class AddMasterCategoryComponent extends BaseComponent implements OnInit {
 
   masterCategoryDetail: MasterCategories;
   masterId: number;
-  constructor(public location: Location,public router: Router, public activeRoute: ActivatedRoute, public service: CommonService) {
+  constructor(public location: Location,public router: Router, 
+    public activeRoute: ActivatedRoute, public service: CommonServices) {
     super(service);
   }
   ngOnInit() {

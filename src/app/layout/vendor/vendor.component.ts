@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonService } from 'src/app/framework/common.service';
+import { CommonServices } from 'src/app/framework/common.service';
 import { BaseComponent } from 'src/app/framework/BaseCompo';
 import { ApiGenerator } from 'src/app/framework/ApiGenerator';
 import { TaskCode } from 'src/app/framework/global';
@@ -10,11 +10,11 @@ import { Vendor, VendorResponse } from 'src/app/models/VendorResponse';
   selector: 'app-vendor',
   templateUrl: './vendor.component.html',
   styleUrls: ['./vendor.component.css'],
-  providers: [CommonService]
+  providers: [CommonServices]
 })
 export class VendorComponent extends BaseComponent implements OnInit {
   vendorlist: Vendor[];
-  constructor(private service: CommonService) { 
+  constructor(private service: CommonServices) { 
     super(service);
   }
 

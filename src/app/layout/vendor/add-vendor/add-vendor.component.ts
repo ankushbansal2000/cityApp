@@ -5,7 +5,7 @@ import { CheckUtil } from 'src/app/framework/Utils/CheckUtils';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiGenerator } from 'src/app/framework/ApiGenerator';
 import { BaseComponent } from 'src/app/framework/BaseCompo';
-import { CommonService } from 'src/app/framework/common.service';
+import { CommonServices } from 'src/app/framework/common.service';
 import { TaskCode } from 'src/app/framework/global';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 
@@ -13,7 +13,7 @@ import { IDropdownSettings } from 'ng-multiselect-dropdown';
   selector: 'app-add-vendor',
   templateUrl: './add-vendor.component.html',
   styleUrls: ['./add-vendor.component.css'],
-  providers: [CommonService]
+  providers: [CommonServices]
 })
 export class AddVendorComponent extends BaseComponent implements OnInit {
   vendorDetail: Vendor;
@@ -21,7 +21,8 @@ export class AddVendorComponent extends BaseComponent implements OnInit {
   dropdownList=[];
   selectedList = [];
   dropdownSettings = {};
-  constructor(public location: Location,public router: Router, public activeRoute: ActivatedRoute, public service: CommonService) {
+  constructor(public location: Location,public router: Router, 
+    public activeRoute: ActivatedRoute, public service: CommonServices) {
     super(service);
   }
 

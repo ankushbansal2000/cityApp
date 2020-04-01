@@ -1,89 +1,70 @@
-import { Headers } from '@angular/http';
+import { Http, Request, RequestMethod, Response, Headers, RequestOptions } from '@angular/http';
+import { TaskCode } from './global';
 import { ClassType } from 'class-transformer/ClassTransformer';
 import { BaseResponse } from './BaseResponseModel';
-import { StorageUtil, KEYS } from './StorageUtil';
-import { HttpHeaders } from '@angular/common/http';
-
 export class HttpRequest {
-
     url: string;
-    params: any;
     method: string;
-    taskCode: number;
-    queryParams: HttpHeaders;
-    headers: HttpHeaders;
-    classTypeValue: ClassType<any> = BaseResponse;
+    params: any;
+    taskCode: TaskCode;
+    headers: Headers;
+    queryParams: Headers;
+    classTypeValue : ClassType<any> = BaseResponse;
     isArrayResponse: false;
+    responseType:any;
 
     constructor(url: string) {
         this.url = url;
-        this.method = 'GET';
-        this.headers = new HttpHeaders();
-        this.queryParams = new HttpHeaders();
-        this.addDefaultHeaders();
-        console.log(this.url);
-    }
-    addDefaultHeaders() {
-        this.headers.append('Content-Type', 'application/json');
-        let token = StorageUtil.getAuthToken();
-        console.log("Token Is: "+ token);
-        if (token) {
-            this.headers.append('token', token);
-        }
-        // let userId = StorageUtil.getUserId();
-        // console.log("UserId Is: "+ userId)
-        // if (userId) {
-        //     this.headers.append(KEYS.USER_ID, userId);
-        // }
-        //this.headers.append('Access-Control-Allow-Origin', '*');
-
-    }
-    removeDefaultHeaders() {
-        this.headers.delete('Content-Type');
-        this.headers.delete('Authorization');
-        this.headers.delete('roleType');
-    }
-    removeHeaders(key: string) {
-        this.headers.delete(key);
-    }
-    addHeaders(key: string, value: string) {
-        this.headers.append(key, value);
+        this.method = "GET";
+        this.headers = new Headers();    
+        this.addHeader("Content-Type","application/json");
+        this.addHeader('token',sessionStorage.getItem('token'));
+        this.queryParams = new Headers();
     }
     setPostMethod() {
-        this.method = 'POST';
-    }
-
-    setDeleteMethod() {
-        this.method = 'DELETE';
-    }
-    setPatchMethod() {
-        this.method = 'PATCH';
+        this.method = "POST";
+       /*  this.addHeader('token', sessionStorage.getItem('token')); */
     }
     setPutMethod() {
-        this.method = 'PUT';
+        this.method = "PUT";
+       /*  this.addHeader('token', sessionStorage.getItem('token')); */
     }
+    setDeleteMethod() {
+        this.method = "DELETE";
+       /*  this.addHeader('token', sessionStorage.getItem('token')); */
+    }
+
+    setPatchMethod() {
+        this.method = "PATCH";
+        /* this.addHeader('token', sessionStorage.getItem('token')); */
+    }
+
     addQueryParams(key: string, value: string) {
         this.queryParams.append(key, value);
     }
 
-    getCompleteUrl() {
-        if (this.queryParams !== undefined) {
-            var paramString = "?";
-            for (let key of this.queryParams.keys()) {
-                let value = this.queryParams.get(key)
-                paramString = paramString + key + "=" + value + "&";
-            }
-            paramString = paramString.slice(0,-1);
-            this.url = this.url + paramString;
-            // console.log(this.url);
-        }
+    addHeader(key: string, value: string) {
+        this.headers.append(key, value);
+    }
+    removeHeader(key: string) {
+        this.headers.delete(key);
     }
 
+    getCompleteUrl(){
+        if(this.queryParams !== undefined && this.queryParams.values.length>0){
+            var paramString = "";
+            for(let key of this.queryParams.keys()){
+                let value = this.queryParams.get(key)
+                paramString = paramString + key + "=" + value + "&"
+            }
+            this.url = this.url + paramString;
+        }
+    }
 }
 
-export class HttpGenericRequest<T> extends HttpRequest {
+export class HttpGenericRequest<T> extends HttpRequest{
     classType: ClassType<T>;
-    constructor(url: string) {
+    constructor(url: string){
         super(url);
     }
 }

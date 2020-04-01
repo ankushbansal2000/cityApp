@@ -2,7 +2,7 @@ import { TaskCode } from './global';
 import { AppComponent } from './../app.component';
 import { JsonParser } from './ApiGenerator';
 import { OnInit } from '@angular/core';
-import { CommonService } from './common.service';
+import { CommonServices } from './common.service';
 import Swal from 'sweetalert2';
 import { BaseResponse } from './BaseResponseModel';
 import { HttpRequest, HttpGenericRequest } from './HttpRequest';
@@ -15,7 +15,7 @@ export class BaseComponent implements OnInit {
     // cloader: boolean = false;
     isLoader: boolean = false;
     maxSize: number = 8;
-    constructor(protected commonService: CommonService) { }
+    constructor(protected commonService: CommonServices) { }
 
     ngOnInit() {
     }
