@@ -52,3 +52,11 @@
     float: right;
     width: 20%;
 }
+.addCategoryWrap {
+    float: left;
+    width: 100%;
+}
+.headerOfAddCategory {
+    float: left;
+    width: 100%;  
+}

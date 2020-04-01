@@ -28,8 +28,15 @@ export class Vendor {
     pincode: string;
     city: number;
     rangeOfDelivery: string;
-    categories: number[];
+    categories: Category[];
     password: string;
     lat: string;
     lng: string;
 }
+export class Category {
+    image: string;
+    id: number;
+    title: string;
+    desc: string;
+}
+
