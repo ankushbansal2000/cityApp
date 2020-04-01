@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonService } from '../../framework/common.service';
+import { CommonServices } from '../../framework/common.service';
 import { ApiGenerator } from '../../framework/ApiGenerator';
 import { TaskCode } from 'src/app/framework/global';
 import { CityDetailResponse, CityDetail, CitiesResponse } from 'src/app/models/CityResponse';
@@ -9,12 +9,12 @@ import { BaseComponent } from 'src/app/framework/BaseCompo';
   selector: 'app-city',
   templateUrl: './city.component.html',
   styleUrls: ['./city.component.css'],
-  providers: [CommonService]
+  providers: [CommonServices]
 })
 export class CityComponent extends BaseComponent implements OnInit {
   citylist: CityDetail[];
   cityDetail: Array<CityDetail>;
-  constructor(private service: CommonService) { 
+  constructor(private service: CommonServices) { 
     super(service);
   }
 number : string = '9a199959-ea10-490a-b2ae-207bba19462b';

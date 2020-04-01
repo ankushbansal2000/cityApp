@@ -36,7 +36,6 @@ export class ApiGenerator {
     const httpreq = new HttpRequest(global.GET_DATA_BY_ID_CITY.concat("?id=").concat(id.toString()));
     httpreq.classTypeValue = CitiesResponse;
     httpreq.taskCode = TaskCode.GET_DATA_BY_ID_CITY;
-    httpreq.addDefaultHeaders();
     console.log(httpreq);
     return httpreq;
   }
