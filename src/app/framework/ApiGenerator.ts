@@ -1,3 +1,8 @@
+import { UserDetailResponse, UserDetail } from './../models/UserResponse';
+import { VendorResponse } from 'src/app/models/VendorResponse';
+import { Vendors } from './../models/VendorResponse';
+import { FileResponse } from './../models/FileResponse';
+import { Logger } from './Utils/Logger';
 import { LoginDetail, LoginDetailResponse } from './../models/LoginResponse';
 import { BaseResponse } from './BaseResponseModel';
 import { HttpRequest } from './HttpRequest';
@@ -89,7 +94,7 @@ static postMasterCategories(model: FormData) {
  return http;
 }
 
-static deleteMasterCategoriesRequest(id: number) {
+static deleteMasterCategoriesRequest(id: MasterCategories) {
 const http = new HttpRequest(global.DEL_MASTER_CATEGORIES.concat("?id=").concat(id.toString()));
 http.setDeleteMethod();
 http.classTypeValue = MasterCategoryResponse;
@@ -110,21 +115,21 @@ return http;
 
 static getAllVendor() {
   const http = new HttpRequest(global.GET_ALL_VENDOR);
-  http.classTypeValue = CitiesResponse;
+  http.classTypeValue = VendorResponse;
   http.taskCode = TaskCode.GET_ALL_VENDOR;
   return http;
 }
 static getByIdVendorRequest(id: number) {
   const httpreq = new HttpRequest(global.GET_DATA_BY_ID_VENDOR.concat("?id=").concat(id.toString()));
-  httpreq.classTypeValue = CitiesResponse;
+  httpreq.classTypeValue = VendorResponse;
   httpreq.taskCode = TaskCode.GET_DATA_BY_ID_VENDOR;
   return httpreq;
 }
 
-static postVendor(model: Vendor) {
+static postVendor(model: Vendors) {
  const http = new HttpRequest(global.POST_VENDOR);
  http.setPostMethod();
- http.classTypeValue = CitiesResponse;
+ http.classTypeValue = VendorResponse;
  http.params = classToPlain(model as object);
  http.taskCode = TaskCode.POST_VENDOR;
  return http;
@@ -133,18 +138,74 @@ static postVendor(model: Vendor) {
 static deleteVendorRequest(id: number) {
 const http = new HttpRequest(global.DEL_VENDOR.concat("?id=").concat(id.toString()));
 http.setDeleteMethod();
-http.classTypeValue = CitiesResponse;
+http.classTypeValue = VendorResponse;
 http.taskCode = TaskCode.DEL_VENDOR;
 return http;
 }
 
-static updateVendorRequest(id: number, vendorDetail : Vendor) {
+static updateVendorRequest(id: number, vendorDetail : Vendors) {
 const http = new HttpRequest(global.UPDATE_VENDOR.concat("?id=").concat(id.toString()));
 http.params = classToPlain(vendorDetail);
 http.setPatchMethod();
 http.taskCode = TaskCode.UPDATE_VENDOR;
 return http;
 }
+
+
+// image
+
+static getFileRequest(file: File) {
+  var data: FormData = new FormData();
+  data.append("file", file);
+  data.append("filetype", "1");
+  Logger.log(data);
+  return this.uploadFile(data);
+}
+
+static uploadFile(data: FormData) {
+  const httpreq = new HttpRequest(global.UPLOAD_IMAGE_URL);
+  httpreq.taskCode = TaskCode.UPLOAD_IMAGE_URL;
+  httpreq.removeHeader("Content-Type");
+  httpreq.params = data;
+  httpreq.classTypeValue = FileResponse;
+  httpreq.setPostMethod();
+  console.log(httpreq);
+  return httpreq;
+}
+
+  //     USER      //
+
+  static getAllUser() {
+    const http = new HttpRequest(global.GET_ALL_USER);
+    http.classTypeValue = UserDetailResponse;
+    http.taskCode = TaskCode.GET_ALL_USER;
+    return http;
+  }
+  static getByIdUserRequest(id: number) {
+    const httpreq = new HttpRequest(global.GET_DATA_BY_ID_USER.concat("?id=").concat(id.toString()));
+    httpreq.classTypeValue = UserDetailResponse;
+    httpreq.taskCode = TaskCode.GET_DATA_BY_ID_USER;
+    return httpreq;
+  }
+
+ static deleteUserRequest(id: number) {
+  const http = new HttpRequest(global.DEL_USER.concat("?id=").concat(id.toString()));
+  http.setDeleteMethod();
+  http.classTypeValue = UserDetailResponse;
+  http.taskCode = TaskCode.DEL_USER;
+  return http;
+}
+
+static updateUserRequest(id: number, data : UserDetail) {
+  const http = new HttpRequest(global.UPDATE_USER.concat("?id=").concat(id.toString()));
+  http.setPatchMethod();
+  http.taskCode = TaskCode.UPDATE_USER;
+  http.params = classToPlain(data);
+  return http;
+}
+
+
+
 
 
 }

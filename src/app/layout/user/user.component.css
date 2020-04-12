@@ -1,0 +1,55 @@
+.citywrap {
+    padding: 10px;
+}
+.mainWrap {
+    background: white;
+}
+tbody{
+    max-height: 480px !important;
+  }
+   
+  td, th {
+    padding: 4px !important;
+    font-weight: 400;
+    font-size: 15px;
+  }
+
+  td {
+    font-weight: 300;
+    font-size: 13px;
+  }
+  
+  table,
+  tr td {
+    border: 1px solid #E9ECEF;
+  }
+  
+  tbody {
+    display: block !important;
+    overflow-y: overlay !important;
+  }
+  
+  thead,
+  tbody tr {
+    display: table;
+    width: 100%;
+  
+    table-layout: fixed;
+    position: relative !important;
+  }
+  
+  thead {
+    width: 100%;
+  }
+  
+  table {
+    width: auto !important;
+  }
+  .headWrapParaVendor {
+    float: left;
+    width: 100%;
+    font-size: 22px;
+  }
+  .headerWrap{
+      background: white;
+  }

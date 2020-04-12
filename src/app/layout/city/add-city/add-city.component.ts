@@ -80,7 +80,7 @@ export class AddCityComponent extends BaseComponent implements OnInit {
         case TaskCode.GET_DATA_BY_ID_CITY:
           const cityRes = response as CityDetailsResponse;
           this.cityDetail = cityRes.response.data;
-          console.log(this.cityDetail)
+
           break;
         case TaskCode.POST_CITY:
           this.router.navigate(['/city']);

@@ -20,12 +20,11 @@ export class CityComponent extends BaseComponent implements OnInit {
 number : string = '9a199959-ea10-490a-b2ae-207bba19462b';
   ngOnInit() {
     this.getAllCity();
-   console.log( sessionStorage.getItem('token'));
   } 
 
   getAllCity() {
     this.downloadData(ApiGenerator.getAllCity());
-  }
+  } 
   deleteCity(id: number) {
     this.downloadData(ApiGenerator.deleteCityRequest(id));
   }
@@ -39,6 +38,7 @@ number : string = '9a199959-ea10-490a-b2ae-207bba19462b';
           this.cityDetail = cityRes.response.data;
           break;
         case TaskCode.DEL_CITY:
+          location.reload();
           break;
       }
     }

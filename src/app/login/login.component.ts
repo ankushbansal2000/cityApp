@@ -51,5 +51,13 @@ export class LoginComponent extends BaseComponent implements OnInit {
     return isSuccess;
   }
 
+  onErrorReceived(taskCode: TaskCode) {
+    switch (taskCode) {
+      case TaskCode.GET_LOGIN_URL:
+      this.isLoader = false;
+      alert("Mobile number or password incorrect !");
+        break;
+    }
+  }
 
 }

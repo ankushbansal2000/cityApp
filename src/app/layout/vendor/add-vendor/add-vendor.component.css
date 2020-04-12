@@ -11,6 +11,7 @@
     float: left;
     width: 50%;
     padding: 5px;
+    min-height: 54px;
 }
 .labelWrap {
     float: left;
@@ -52,11 +53,175 @@
     float: right;
     width: 20%;
 }
-.addCategoryWrap {
+
+
+
+
+.dropdownWrap{
+    float: left;
+   width: 100%;
+}
+.fordropdownWrap{
+    float: left;
+    width: 100%;
+    position: relative;
+}
+.dropdown{
     float: left;
     width: 100%;
 }
-.headerOfAddCategory {
+.calender-box{
+    font-size: 13px !important;
+    color: #ced4da;
     float: left;
-    width: 100%;  
+    width: 100%;
+    overflow-y: hidden;
+    background-color: #fff;
+    border:1px solid #ced4da !important;
+    border-radius: 0.15rem;
+    cursor: pointer;
+    min-height: 36px;
+    padding: 0.3rem 0rem 0.2rem 0.6rem !important;
 }
+.calender-box label{
+    float: left;
+    width: 90%;
+}
+.calender-box span{
+    float: left;
+    width: 90%;
+    line-height: 25px;
+}
+.calender-box i{
+    float: right;
+    width: 6%;
+    margin-top: 4px
+}
+.select-account-menu{
+    float: left;
+    width: 100%;
+    position: absolute;
+    left: 0%;
+    top: 31px;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    z-index: 5000 !important;
+}
+.menu-height-css{
+        float: left;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: scroll;
+}
+.dropdown-item{
+    width: 100%;
+    float: left;
+    padding: 0;
+    color: #212529;
+    background-color: transparent;
+}
+.dropdown-item input{
+    float: left;
+    width: 100%;
+    padding: 6px;
+}
+.dataDropdownlistWrap{
+      float: left;
+    width: 100%;
+    background: #fbfbfb30;
+    border-bottom: 1px solid #1b00ff14;
+    padding: 6px;
+}
+.dataDropdownlistWrap:hover{
+        background: #80808017;
+}
+.dataPersonalWrap{
+    float: left;
+    width:100%;
+}
+.forNameWrap{
+    float: left;
+    font-size: 13px;
+    color: #000000;
+    padding: 2px 10px;
+    width: 60%;
+}
+.forNameWrap input,.forNameWrapCreative input  {
+    float: left;
+    width: 85%;
+}
+.forNameWrap i,.forNameWrapCreative i{
+       float: right;
+    font-size: 18px;
+    padding: 5px;
+    color: #1277bd;
+}
+.multiselect-dropdown {
+    background: white;
+}
+.checkBoxInput {
+cursor: pointer;
+}
+.InformationSelectGetWrap{
+    float: left;
+    width: 50%;
+}
+.InformationSelectGetWrap select{
+    float: left;
+    width: 100%;
+    color: gray;
+    border-radius: 3px;
+    border: 1px solid #80808073;
+    background-color: white;
+    padding: 6px;
+}
+.forIdWrap{
+      float: left;
+    font-size: 11px;
+    padding: 0px 5px;
+    color: gray;
+    width: 100%;
+}
+
+.main{
+    float: left;
+    width: 98%;
+    position: absolute;
+    height: 50vh;
+}
+.forDescWrap{
+    float: left;
+    font-size: 11px;
+    color: #000000;
+    padding: 2px 10px;
+    width: 60%;
+}
+.forCheckBox {
+    float: left;
+    width: 9%;
+    padding-top: 20px;
+}
+.forImageWrap{
+float: left;
+width: 20%;
+}
+.forImageWrap img{
+    float: left;
+    width: 100%;
+}
+.labelWrapForTitle{
+    float: left;
+    border: 1px solid gray;
+    padding: 1px 5px;
+    color: white;
+    border-radius: 4px;
+    background: blue;
+    margin: 1px 4px;
+}
+    .validation {
+        float: left;
+        width: 100%;
+        color: red;
+        font-size: 12px;
+        text-align: center;
+    }

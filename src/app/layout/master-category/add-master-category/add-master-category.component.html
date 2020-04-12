@@ -10,70 +10,118 @@
     <div class="container">
        
         <div class="mainDiv">
-                <form #addCity="ngForm" (ngSubmit)="save()">
+                <form #addMasterCategory="ngForm" (ngSubmit)="save()">
             <div class="rowWrap"> 
                 <div class="labelWrap">
-                Title :
+                Title  <span style="color: red">*</span>
                 </div>
                 <div class="inputWrap">
-                    <input type="text" name="title" #title="ngModel" (change)="onTitleChanges($event)" [(ngModel)]="masterCategoryDetail.title" class="form-control">
+                    <input type="text" required name="title" #title="ngModel" [(ngModel)]="masterCategoryDetail.title" class="form-control">
+                    <div *ngIf="title.touched && title.invalid">
+                        <div class="validation" *ngIf="title.errors['required']">
+                          Please enter title
+                        </div>
+                      </div>
                 </div>
             </div>
 
             <div class="rowWrap">
                 <div class="labelWrap">
-                   Sub Title:
+                   Sub Title  <span style="color: red">*</span>
                 </div>
                 <div class="inputWrap">
-                    <input type="text" name="subTitle" #subTitle="ngModel" (change)="onSubTitleChanges($event)" [(ngModel)]="masterCategoryDetail.subTitle" class="form-control">
+                    <input type="text" required name="subTitle" #subTitle="ngModel" [(ngModel)]="masterCategoryDetail.subTitle" class="form-control">
+                    <div *ngIf="subTitle.touched && subTitle.invalid">
+                        <div class="validation" *ngIf="subTitle.errors['required']">
+                          Please enter subTitle
+                        </div>
+                      </div>
                 </div>
             </div>
 
             <div class="rowWrap">
                 <div class="labelWrap">
-                   Description :
+                   Description  <span style="color: red">*</span>
                 </div>
                 <div class="inputWrap">
-                    <input type="text" name="description" #description="ngModel" (change)="onDescriptionChanges($event)" [(ngModel)]="masterCategoryDetail.description" class="form-control">
+                    <input type="text" required name="description" #description="ngModel" [(ngModel)]="masterCategoryDetail.description" class="form-control">
+                    <div *ngIf="description.touched && description.invalid">
+                        <div class="validation" *ngIf="description.errors['required']">
+                          Please enter description
+                        </div>
+                      </div>
                 </div>
             </div>
 
             <div class="rowWrap">
                     <div class="labelWrap">
-                       Entity :
+                       Entity  <span style="color: red">*</span>
                     </div>
                     <div class="inputWrap">
-                        <input type="text" name="entity" #entity="ngModel" (change)="onEntityChanges($event)" [(ngModel)]="masterCategoryDetail.entity" class="form-control">
+                        <input type="text" required name="entity" #entity="ngModel" [(ngModel)]="masterCategoryDetail.entity" class="form-control">
+                        <div *ngIf="entity.touched && entity.invalid">
+                            <div class="validation" *ngIf="entity.errors['required']">
+                              Please enter entity
+                            </div>
+                          </div>
                     </div>
                 </div>
                 <div class="rowWrap">
                     <div class="labelWrap">
-                       Icon :
+                       Icon  <span style="color: red">*</span>
                     </div>
                     <div class="inputWrap">
-                        <input type="file" name="iconUrl" #iconUrl="ngModel" (change)="onIconUrlChanges($event)" [(ngModel)]="masterCategoryDetail.iconUrl" class="form-control">
+                        <input type="file" required name="iconUrl" #iconUrl (change)="onIconUrlChanges($event)" class="form-control">
+                        <div *ngIf="iconUrl.touched && iconUrl.invalid">
+                            <div class="validation" *ngIf="iconUrl.errors['required']">
+                              Please Select Image
+                            </div>
+                          </div>
+                          
                     </div>
+                  <div class="preview" *ngIf="masterCategoryDetail.iconUrl">
+                            <div class="previewimage">
+                              <img id="imagesrc" src="{{masterCategoryDetail.iconUrl}}" #fileInput>
+                            </div>
+                          
                 </div>
+                
+                </div>
+               
                 <div class="rowWrap">
                     <div class="labelWrap">
                        Background Image :
                     </div>
                     <div class="inputWrap">
-                        <input type="file" name="bgImage" #bgImage="ngModel" (change)="onbgImageChanges($event)" [(ngModel)]="masterCategoryDetail.bgImage" class="form-control">
+                        <input type="file" name="bgImage" (change)="onbgImageChanges($event)" class="form-control">
                     </div>
+                    <div class="preview" *ngIf="masterCategoryDetail.bgImage">
+                        <div class="previewimage">
+                          <img id="imagesrc" src="{{masterCategoryDetail.bgImage}}" #fileInput>
+                        </div>
+                      
+            </div>
                 </div>
                 <div class="rowWrap">
                         <div class="labelWrap">
-                           Master JSON Key :
+                           Master JSON Key  <span style="color: red">*</span>
                         </div>
                         <div class="inputWrap">
-                            <input type="text" name="master_json_key" (change)="onMasterJsonChanges($event)" #master_json_key="ngModel" [(ngModel)]="masterCategoryDetail.master_json_key" class="form-control">
+                            <input type="text" required name="master_json_key" #master_json_key="ngModel" [(ngModel)]="masterCategoryDetail.master_json_key" class="form-control">
+                            <div *ngIf="master_json_key.touched && master_json_key.invalid">
+                                <div class="validation" *ngIf="master_json_key.errors['required']">
+                                  Please enter Master Json Key
+                                </div>
+                              </div>
                         </div>
+                      
                 </div>
+
+
 
             <div class="buttonWrap">
                 <div class="buttonWrapMemory">
-                <button class="btn btn-primary">{{_buttonText}}</button>
+                <button class="btn btn-primary" [disabled]="!addMasterCategory.form.valid" >{{_buttonText}}</button>
             </div>
             </div>
         </form>

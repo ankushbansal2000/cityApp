@@ -1,3 +1,4 @@
+import { VendorDetaResponse } from './../../models/VendorResponse';
 import { Component, OnInit } from '@angular/core';
 import { CommonServices } from 'src/app/framework/common.service';
 import { BaseComponent } from 'src/app/framework/BaseCompo';
@@ -26,19 +27,24 @@ export class VendorComponent extends BaseComponent implements OnInit {
     this.downloadData(ApiGenerator.getAllVendor());
   }
   deleteVendor(id: number) {
-    this.downloadData(ApiGenerator.deleteCityRequest(id));
+    this.downloadData(ApiGenerator.deleteVendorRequest(id));
   }
+
+
 
   onResponseReceived(taskCode: TaskCode, response: any) {
     const isSuccess = super.onResponseReceived(taskCode, response);
     if (isSuccess) {
       switch (taskCode) {
         case TaskCode.GET_ALL_VENDOR:
-          const cityRes = response as VendorResponse;
-          console.log(cityRes);
+          const vendorRes = response as VendorDetaResponse;
+          this.vendorlist = vendorRes.response.data;
+          console.log(this.vendorlist);
           break;
-        case TaskCode.DEL_CITY:
+        case TaskCode.DEL_VENDOR:
+          location.reload();
           break;
+        
       }
     }
     return true;

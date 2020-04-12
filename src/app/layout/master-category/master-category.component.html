@@ -35,29 +35,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td style="width:100px"><img class="imgWrap" src="../../../assets/coder.jpg"></td>
-                        <td style="width:100px">abc</td>
-                        <td style="width:100px">abc</td>
-                        <td style="width:100px">abc</td>
-                        <td style="width:100px">abc</td>
-                        <td style="width:120px">abc</td>
-                        <td style="width:120px">abc</td>
-                        <td style="width: 50px">
-                            <i title="Edit Vendor" [routerLink]="['editvendor' ,1]" class="fa fa-fw fa-edit"></i>
-                        </td>
-                        <td style="width: 70px">
-                            <i title="Delete Vendor" (click)="deleteMasterCategory()" class="fa fa-fw fa-trash"></i>
-                        </td>
-                    </tr>
-                    <tr *ngFor="let masterCategorylist of masterCategorylist">
-                        <td style="width:100px"> <img class="imgWrap" src="masterCategorylist.iconUrl"> </td>
+                  
+                    <tr *ngFor="let masterCategorylist of masterList">
+                        <td style="width:100px"> <img class="imgWrap" src="{{masterCategorylist.iconUrl}}"> </td>
                         <td style="width:100px"> {{masterCategorylist.title}} </td>
                         <td style="width: 100px"> {{masterCategorylist.subTitle}} </td>
                         <td style="width: 100px"> {{masterCategorylist.description}} </td>
                         <td style="width: 100px"> {{masterCategorylist.entity}} </td>
                         <td style="width: 120px"> {{masterCategorylist.master_json_key}} </td>
-                        <td style="width: 120px"> {{masterCategorylist.bgImage}} </td>
+                        <td style="width: 120px"> <img class="imgWrap" src="{{masterCategorylist.bgImage}}"></td>
                         <td style="width: 50px">
                             <i title="Edit Vendor" [routerLink]="['editMasterCategory',masterCategorylist.id]"
                                 class="fa fa-fw fa-edit"></i>

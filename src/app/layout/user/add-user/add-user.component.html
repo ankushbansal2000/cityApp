@@ -1,0 +1,78 @@
+<div class="mainWrap">
+    <div class="headWrap">
+            <div class="titleHeadWrap">
+                {{_headerText}}
+            </div>
+            <div class="buttonHeadWrap">
+                <button class="btn btn-primary" (click)="goBack()" >Go Back</button>
+            </div>
+        </div>
+<div class="container">
+   
+    <div class="mainDiv">
+            <form #addUser="ngForm" (ngSubmit)="save()">
+        <div class="rowWrap">
+            <div class="labelWrap">
+               User Name  <span style="color: red">*</span>
+            </div>
+            <div class="inputWrap">  
+                <input type="text" name="name"   #name="ngModel" [(ngModel)]="userDetail.name"  class="form-control" required>
+            <div *ngIf="name.touched && name.invalid">
+                <div class="validation" *ngIf="name.errors['required']">
+                  Please enter User name
+                </div>
+              </div>
+              </div>
+          
+        </div>
+
+        <div class="rowWrap">
+            <div class="labelWrap">
+               Pin Code  <span style="color: red">*</span>
+            </div>
+            <div class="inputWrap">
+                <input type="text"name="pincode" pattern="[0-9]{1,10}" #pincode="ngModel" required [(ngModel)]="userDetail.pincode"  class="form-control">
+                <div *ngIf="pincode.touched && pincode.invalid" class="validation" >
+                      Please enter Pincode and characters are not allowed
+                    </div>
+                  </div>
+            </div>
+        
+
+        <div class="rowWrap">
+            <div class="labelWrap">
+               Mobile  <span style="color: red">*</span>
+            </div>
+            <div class="inputWrap">
+                <input type="text" name="mobile" #mobile="ngModel" required [(ngModel)]="userDetail.mobile"  class="form-control">
+                <div *ngIf="mobile.touched && mobile.invalid">
+                    <div class="validation" *ngIf="mobile.errors['required']">
+                      Please enter Mobile Number
+                    </div>
+                  </div>
+            </div>
+        </div>
+
+        <div class="rowWrap">
+                <div class="labelWrap">
+                    City <span style="color: red">*</span>
+                </div>
+                <div class="InformationSelectGetWrap">
+
+                    <select class="browser-default custom-select" #city name="city"
+                    [(ngModel)]="userDetail.cityId">
+                    <option *ngFor="let i of cityDetail" value="{{i.id}}">{{i.name}}</option>
+                </select>
+                 
+                </div>
+            </div>
+
+        <div class="buttonWrap">
+            <div class="buttonWrapMemory">
+            <button class="btn btn-primary" [disabled]="!addUser.form.valid" >{{_buttonText}}</button>
+        </div>
+        </div>
+    </form>
+    </div>
+</div>
+</div>

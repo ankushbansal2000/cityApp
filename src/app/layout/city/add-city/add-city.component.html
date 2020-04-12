@@ -13,28 +13,43 @@
                 <form #addCity="ngForm" (ngSubmit)="save()">
             <div class="rowWrap">
                 <div class="labelWrap">
-                   City Name :
+                   City Name  <span style="color: red">*</span>
                 </div>
-                <div class="inputWrap">
-                    <input type="text" name="name" #name="ngModel" [(ngModel)]="cityDetail.name"  class="form-control">
-                </div>
+                <div class="inputWrap">  
+                    <input type="text" name="name"   #name="ngModel" [(ngModel)]="cityDetail.name"  class="form-control" required>
+                <div *ngIf="name.touched && name.invalid">
+                    <div class="validation" *ngIf="name.errors['required']">
+                      Please enter city name
+                    </div>
+                  </div>
+                  </div>
+              
             </div>
 
             <div class="rowWrap">
                 <div class="labelWrap">
-                   Pin Code :
+                   Pin Code  <span style="color: red">*</span>
                 </div>
                 <div class="inputWrap">
-                    <input type="text"name="pincode" #pincode="ngModel" [(ngModel)]="cityDetail.pincode"  class="form-control">
+                    <input type="text"name="pincode" pattern="[0-9]{1,10}" #pincode="ngModel" required [(ngModel)]="cityDetail.pincode"  class="form-control">
+                    <div *ngIf="pincode.touched && pincode.invalid" class="validation" >
+                          Please enter Pincode and characters are not allowed
+                        </div>
+                      </div>
                 </div>
-            </div>
+            
 
             <div class="rowWrap">
                 <div class="labelWrap">
-                   State :
+                   State  <span style="color: red">*</span>
                 </div>
                 <div class="inputWrap">
-                    <input type="text" name="state" #state="ngModel" [(ngModel)]="cityDetail.state"  class="form-control">
+                    <input type="text" name="state" #state="ngModel" required [(ngModel)]="cityDetail.state"  class="form-control">
+                    <div *ngIf="state.touched && state.invalid">
+                        <div class="validation" *ngIf="state.errors['required']">
+                          Please enter state
+                        </div>
+                      </div>
                 </div>
             </div>
 
@@ -45,13 +60,16 @@
                     <div class="InformationSelectGetWrap">
     
                         <select class="browser-default custom-select"
-                        name="student_category" [(ngModel)]="cityDetail.launched">
-                            <option>
-                                Select
-                            </option>
+                        name="launched" #launched required [(ngModel)]="cityDetail.launched">
+                            
                             <option value="True">True</option>
                             <option value="False">False</option>
                         </select>
+                        <div *ngIf="launched.touched && launched.invalid">
+                            <div class="validation" *ngIf="launched.errors['required']">
+                              Please select launched type
+                            </div>
+                          </div>
                     </div>
                 </div>
 

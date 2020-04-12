@@ -1,3 +1,5 @@
+import { MasterCategorResponse, MasterCategorysResponse } from './../../../models/MasterCategoriesResponse';
+import { FileResponse } from './../../../models/FileResponse';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonServices } from 'src/app/framework/common.service';
@@ -17,6 +19,7 @@ export class AddMasterCategoryComponent extends BaseComponent implements OnInit 
 
   masterCategoryDetail: MasterCategories;
   masterId: number;
+  imageIcon : boolean;
   constructor(public location: Location,public router: Router, 
     public activeRoute: ActivatedRoute, public service: CommonServices) {
     super(service);
@@ -24,7 +27,7 @@ export class AddMasterCategoryComponent extends BaseComponent implements OnInit 
   ngOnInit() {
     this.masterId = this.activeRoute.snapshot.params['id'];
     if (!CheckUtil.isNullorUndefined(this.masterId)) {
-     // this.getMasterCategoryById(this.masterId);
+      this.getMasterCategoryDetailById(this.masterId);
     }
     this.masterCategoryDetail = new MasterCategories();
   }
@@ -55,49 +58,21 @@ export class AddMasterCategoryComponent extends BaseComponent implements OnInit 
     }
   }
 
-  onDescriptionChanges(event) {
-    this.masterCategoryDetail.description = event.target.value;
-  }
-  onSubTitleChanges(event){
-    this.masterCategoryDetail.subTitle = event.target.value;
-  }
-  onTitleChanges(event){
-    this.masterCategoryDetail.title = event.target.value;
-  }
-  onEntityChanges(event) {
-    this.masterCategoryDetail.entity = event.target.value;
-  }
-  onMasterJsonChanges(event) {
-    this.masterCategoryDetail.master_json_key = event.target.value;
-  }
+
   onIconUrlChanges(event) {
-    this.masterCategoryDetail.iconUrl = event.target.value;
+    this.imageIcon = true;
+    this.downloadData(ApiGenerator.getFileRequest(event.target.files[0]));
   }
   onbgImageChanges(event) {
-    this.masterCategoryDetail.bgImage = event.target.value;
+    this.imageIcon = false;
+    this.downloadData(ApiGenerator.getFileRequest(event.target.files[0]));
   }
 
   updateMasterCategoryDetail(id: number, masterCategoryAdd) {
-    masterCategoryAdd = new FormData();
-    masterCategoryAdd.append('title', this.masterCategoryDetail.title);
-    masterCategoryAdd.append('subTitle', this.masterCategoryDetail.subTitle);
-    masterCategoryAdd.append('entity', this.masterCategoryDetail.entity);
-    masterCategoryAdd.append('description', this.masterCategoryDetail.description);
-    masterCategoryAdd.append('master_json_key', this.masterCategoryDetail.master_json_key);
-    masterCategoryAdd.append('iconUrl', this.masterCategoryDetail.iconUrl);
-    masterCategoryAdd.append('bgImage', this.masterCategoryDetail.bgImage);
     this.downloadData(ApiGenerator.updateMasterCategoriesRequest(id , masterCategoryAdd));
   }
 
   addNewMasterCategoryDetail(masterCategoryAdd) {
-    masterCategoryAdd = new FormData();
-    masterCategoryAdd.append('title', this.masterCategoryDetail.title);
-    masterCategoryAdd.append('subTitle', this.masterCategoryDetail.subTitle);
-    masterCategoryAdd.append('entity', this.masterCategoryDetail.entity);
-    masterCategoryAdd.append('description', this.masterCategoryDetail.description);
-    masterCategoryAdd.append('master_json_key', this.masterCategoryDetail.master_json_key);
-    masterCategoryAdd.append('iconUrl', this.masterCategoryDetail.iconUrl);
-    masterCategoryAdd.append('bgImage', this.masterCategoryDetail.bgImage);
     this.downloadData(ApiGenerator.postMasterCategories(masterCategoryAdd));
   }
 
@@ -114,9 +89,10 @@ export class AddMasterCategoryComponent extends BaseComponent implements OnInit 
     if (isSuccess) {
       switch (taskCode) {
         case TaskCode.GET_DATA_BY_ID_MASTER_CATEGORIES:
-          const masterRes = response as MasterCategoriesResponse;
-          this.masterCategoryDetail = masterRes.data;
-          console.log(this.masterCategoryDetail)
+          const masterRes = response as MasterCategorysResponse;
+   
+          this.masterCategoryDetail = masterRes.response.data;
+      
           break;
         case TaskCode.POST_MASTER_CATEGORIES:
           this.router.navigate(['/master-categories']);
@@ -124,6 +100,16 @@ export class AddMasterCategoryComponent extends BaseComponent implements OnInit 
         case TaskCode.UPDATE_MASTER_CATEGORIES:
           this.router.navigate(['/master-categories']);
           break;
+        case TaskCode.UPLOAD_IMAGE_URL:
+            const apiResponse = response as FileResponse;
+       
+            if(this.imageIcon) {
+              this.masterCategoryDetail.iconUrl = apiResponse.response.data;
+            } else {
+              this.masterCategoryDetail.bgImage = apiResponse.response.data;
+            }
+          
+            break;
       }
     }
     return true;

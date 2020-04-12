@@ -4,8 +4,8 @@
 //Live server
 export const API_BASE_URL = "http://174.138.121.157:8888/atyourhome/api/";
 
-export const GET_LOGIN_URL = API_BASE_URL + "user/login";
 
+export const  UPLOAD_IMAGE_URL = API_BASE_URL + "cloud/singleFile";
 
 // CITY
 
@@ -43,6 +43,20 @@ export const UPDATE_VENDOR = API_BASE_URL + "vendor";
 
 export const GET_DATA_BY_ID_VENDOR = API_BASE_URL + "vendor";
 
+// USER
+
+export const GET_ALL_USER = API_BASE_URL + "user/all";
+
+export const DEL_USER = API_BASE_URL + "user";
+
+export const UPDATE_USER = API_BASE_URL + "user";
+
+export const GET_DATA_BY_ID_USER = API_BASE_URL + "user";
+
+// login //
+export const GET_LOGIN_URL = API_BASE_URL + "user/login";
+
+
 export enum TaskCode {
     GET_LOGIN_URL,
     GET_ALL_CITY,
@@ -59,5 +73,11 @@ export enum TaskCode {
     POST_VENDOR,
     DEL_VENDOR,
     UPDATE_VENDOR,
-    GET_DATA_BY_ID_VENDOR
+    GET_DATA_BY_ID_VENDOR,
+    UPLOAD_IMAGE_URL,
+    GET_ALL_USER,
+    DEL_USER,
+    UPDATE_USER,
+    GET_DATA_BY_ID_USER
+
 }

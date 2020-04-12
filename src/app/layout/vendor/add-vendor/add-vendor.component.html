@@ -10,50 +10,79 @@
     <div class="container">
 
         <div class="mainDiv">
-            <form #addCity="ngForm" (ngSubmit)="save(vendorDetail)">
+            <form #addVendor="ngForm" (ngSubmit)="save()">
                 <div class="rowWrap">
                     <div class="labelWrap">
-                        Name :
+                        Name <span style="color: red">*</span>
                     </div>
                     <div class="inputWrap">
-                        <input type="text" name="name" #name="ngModel" [(ngModel)]="vendorDetail.name"
+                        <input type="text" name="name" required #name="ngModel" [(ngModel)]="vendorDetail.name"
                             class="form-control">
+                            <div *ngIf="name.touched && name.invalid">
+                                <div class="validation" *ngIf="name.errors['required']">
+                                  Please Enter Name
+                                </div>
+                              </div>
                     </div>
                 </div>
 
                 <div class="rowWrap">
                     <div class="labelWrap">
-                        Buisness Name :
+                        Buisness Name <span style="color: red">*</span>
                     </div>
                     <div class="inputWrap">
-                        <input type="text" name="businessName" #businessName="ngModel"
+                        <input type="text" required name="businessName" #businessName="ngModel"
                             [(ngModel)]="vendorDetail.businessName" class="form-control">
-                    </div>
+                            <div *ngIf="businessName.touched && businessName.invalid">
+                                <div class="validation" *ngIf="businessName.errors['required']">
+                                  Please Enter Business Name
+                                </div>
+                              </div>
+                        </div>
                 </div>
 
                 <div class="rowWrap">
                     <div class="labelWrap">
-                        Contact Number :
+                        Contact Number <span style="color: red">*</span>
                     </div>
                     <div class="inputWrap">
-                        <input type="text" name="contactNumber" #contactNumber="ngModel"
+                        <input type="text" required name="contactNumber"  pattern="[0-9]{10,15}" #contactNumber="ngModel"
                             [(ngModel)]="vendorDetail.contactNumber" class="form-control">
-                    </div>
+                          <div *ngIf="contactNumber.touched && contactNumber.invalid" class="validation">
+                                  Please Enter Contact Number of minimum 10 digits and characters are not allowed 
+                                
+                              </div> 
+                        </div>
                 </div>
 
                 <div class="rowWrap">
                     <div class="labelWrap">
-                        Address :
+                        Alt Contact Number :
                     </div>
                     <div class="inputWrap">
-                        <input type="text" name="address" #address="ngModel" [(ngModel)]="vendorDetail.address"
-                            class="form-control">
+                        <input type="text" name="altContactNumber" #altContactNumber="ngModel"
+                            [(ngModel)]="vendorDetail.altContactNumber" class="form-control">
                     </div>
                 </div>
 
                 <div class="rowWrap">
                     <div class="labelWrap">
-                        Lat Long :
+                        Address <span style="color: red">*</span>
+                    </div>
+                    <div class="inputWrap">
+                        <input type="text" required name="address" #address="ngModel" [(ngModel)]="vendorDetail.address"
+                            class="form-control">
+                            <div *ngIf="address.touched && address.invalid">
+                                <div class="validation" *ngIf="address.errors['required']">
+                                  Please Enter address
+                                </div>
+                              </div>
+                        </div>
+                </div>
+
+                <div class="rowWrap">
+                    <div class="labelWrap">
+                        Lat Long
                     </div>
                     <div class="inputWrap">
                         <input type="text" name="latLong" #latLong="ngModel" [(ngModel)]="vendorDetail.latLong"
@@ -62,111 +91,209 @@
                 </div>
                 <div class="rowWrap">
                     <div class="labelWrap">
-                        House Number :
+                        House Number <span style="color: red">*</span>
                     </div>
                     <div class="inputWrap">
-                        <input type="text" name="houseNumber" #houseNumber="ngModel"
+                        <input type="text" required name="houseNumber" #houseNumber="ngModel"
                             [(ngModel)]="vendorDetail.houseNumber" class="form-control">
-                    </div>
+                            <div *ngIf="houseNumber.touched && houseNumber.invalid">
+                                <div class="validation" *ngIf="houseNumber.errors['required']">
+                                  Please Enter houseNumber
+                                </div>
+                              </div>
+                        </div>
                 </div>
                 <div class="rowWrap">
-                        <div class="labelWrap">
-                            Working Days :
-                        </div>
-                        <div class="inputWrap">
-                        <ng-multiselect-dropdown [placeholder]="'Select Working Days'"[(ngModel)]="vendorDetail.workingDays" [data]="dropdownList" [settings]="dropdownSettings"
-                            (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)" [ngModelOptions]="{standalone: true}">
+                    <div class="labelWrap">
+                        Working Days
+                    </div>
+                    <div class="inputWrap">
+                        <ng-multiselect-dropdown [placeholder]="'Select Working Days'" 
+                            [(ngModel)]="vendorDetail.workingDays" [data]="dropdownList" [settings]="dropdownSettings"
+                            (onSelect)="onItemSelect($event)" (onDeSelect)="onItemDeSelect($event)"
+                            [ngModelOptions]="{standalone: true}">
                         </ng-multiselect-dropdown>
-                        </div>
-                </div>
-                <div class="rowWrap">
-                    <div class="labelWrap">
-                        Start Time :
-                    </div>
-                    <div class="inputWrap">
-                        <input type="text" name="startTime" #startTime="ngModel" [(ngModel)]="vendorDetail.startTime"
-                            class="form-control">
-                    </div>
-                </div>
-                <div class="rowWrap">
-                    <div class="labelWrap">
-                        End Time :
-                    </div>
-                    <div class="inputWrap">
-                        <input type="text" name="endTime" #endTime="ngModel" [(ngModel)]="vendorDetail.endTime"
-                            class="form-control">
-                    </div>
-                </div>
-                <div class="rowWrap">
-                    <div class="labelWrap">
-                        Pin Code :
-                    </div>
-                    <div class="inputWrap">
-                        <input type="text" name="pincode" #pincode="ngModel" [(ngModel)]="vendorDetail.pincode"
-                            class="form-control">
-                    </div>
-                </div>
-                <div class="rowWrap">
-                    <div class="labelWrap">
-                        City :
-                    </div>
-                    <div class="inputWrap">
-                        <input type="text" name="city" #city="ngModel" [(ngModel)]="vendorDetail.city"
-                            class="form-control">
+ 
                     </div>
                 </div>
 
                 <div class="rowWrap">
                     <div class="labelWrap">
-                        Range of Delivery :
+                        Select Category :
                     </div>
                     <div class="inputWrap">
-                        <input type="text" name="rangeOfDelivery" #rangeOfDelivery="ngModel"
-                            [(ngModel)]="vendorDetail.rangeOfDelivery" class="form-control">
+                        <div class="dropdownWrap">
+                            <div class="fordropdownWrap">
+
+                                <div class="dropdown" (click)="setDropdown()">
+                                    <div class="calender-box">
+                                        <label>
+                                            <div class="labelWrapForTitle" *ngFor="let i of creativeTypeName">
+                                                {{i}}
+                                            </div>
+                                        </label>
+                                        <i class="fa fa-caret-down"></i>
+                                    </div>
+                                </div>
+                             
+                                <div class="dropdown-width select-account-menu" *ngIf="isDropdown">
+                                    <div class="menu-height-css">
+                                        <div class="dataDropdownlistWrap" *ngFor="let i of masterList">
+
+                                            <div class="dataPersonalWrap" (click)="setDataDropdown()">
+                                                <div class="forCheckBox">
+                                                    <input type="checkbox" class="checkBoxInput"
+                                                        (change)="onChange($event.target.checked, i.id, i.title)"
+                                                        [checked]="checked(i.id,i.title)">
+                                                </div>
+                                                <div class="forImageWrap">
+                                                    <img src="{{i.iconUrl}}">
+                                                </div>
+
+                                                <div class="forNameWrap">
+                                                    {{i.title}}
+                                                </div>
+                                                <div class="forDescWrap">
+                                                    {{i.description}}
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <div class="rowWrap">
                     <div class="labelWrap">
-                        Password :
+                        Start Time <span style="color: red">*</span>
+                    </div>
+                    <div class="inputWrap">
+                        <input type="text" required name="startTime" #startTime="ngModel" [(ngModel)]="vendorDetail.startTime"
+                            class="form-control">
+                            <div *ngIf="startTime.touched && startTime.invalid">
+                                <div class="validation" *ngIf="startTime.errors['required']">
+                                  Please Enter startTime
+                                </div>
+                              </div>
+                        </div>
+                </div>
+                <div class="rowWrap">
+                    <div class="labelWrap">
+                        End Time <span style="color: red">*</span>
+                    </div>
+                    <div class="inputWrap">
+                        <input type="text" required name="endTime" #endTime="ngModel" [(ngModel)]="vendorDetail.endTime"
+                            class="form-control">
+                            <div *ngIf="endTime.touched && endTime.invalid">
+                                <div class="validation" *ngIf="endTime.errors['required']">
+                                  Please Enter End Time
+                                </div>
+                              </div>
+                        </div>
+                </div>
+                <div class="rowWrap">
+                    <div class="labelWrap">
+                        Pin Code <span style="color: red">*</span>
+                    </div>
+                    <div class="inputWrap">
+                        <input type="text" required  pattern="[0-9]{1,10}" name="pincode" #pincode="ngModel" [(ngModel)]="vendorDetail.pincode"
+                            class="form-control">
+                            <div *ngIf="pincode.touched && pincode.invalid" class="validation">
+                                  Please Enter Pin Code and characters are not allowed
+                            
+                              </div>
+                        </div>
+                </div>
+
+
+                <div class="rowWrap">
+                    <div class="labelWrap">
+                        Select City <span style="color: red">*</span>
+                    </div>
+                    <div class="InformationSelectGetWrap"> 
+
+                        <select class="browser-default custom-select" required #city name="city"
+                            [(ngModel)]="vendorDetail.city">
+                            <option [selected]="true">
+                                Select
+                            </option>
+                            <option *ngFor="let i of cityDetail" value="{{i.id}}">{{i.name}}</option>
+                        </select>
+                        <div *ngIf="city.touched && city.invalid">
+                            <div class="validation" *ngIf="city.errors['required']">
+                              Please Select City
+                            </div>
+                          </div>
+                    </div>
+                </div>
+
+                <div class="rowWrap">
+                    <div class="labelWrap">
+                        Range of Delivery <span style="color: red">*</span>
+                    </div>
+                    <div class="inputWrap">
+                        <input type="text" required name="rangeOfDelivery" #rangeOfDelivery="ngModel"
+                            [(ngModel)]="vendorDetail.rangeOfDelivery" class="form-control">
+                            <div *ngIf="rangeOfDelivery.touched && rangeOfDelivery.invalid">
+                                <div class="validation" *ngIf="rangeOfDelivery.errors['required']">
+                                  Please Enter Range of Delivery
+                                </div>
+                              </div>
+                        </div>
+                </div>
+                <div class="rowWrap">
+                    <div class="labelWrap">
+                        Password 
                     </div>
                     <div class="inputWrap">
                         <input type="text" name="password" #password="ngModel" [(ngModel)]="vendorDetail.password"
                             class="form-control">
-                    </div>
-                </div>
-
-                <div class="rowWrap">
-                    <div class="labelWrap">
-                        lat :
-                    </div>
-                    <div class="inputWrap">
-                        <input type="text" name="lat" #lat="ngModel" [(ngModel)]="vendorDetail.lat"
-                            class="form-control">
-                    </div>
-                </div>
-
-                <div class="rowWrap">
-                    <div class="labelWrap">
-                        lng :
-                    </div>
-                    <div class="inputWrap">
-                        <input type="text" name="lng" #lng="ngModel" [(ngModel)]="vendorDetail.lng"
-                            class="form-control">
-                    </div>
-                </div>
-                <div class="addCategoryWrap">
-                    <div class="titleHeadWrap">
-                        Add Category
+                           
                         </div>
                 </div>
 
+                <div class="rowWrap">
+                    <div class="labelWrap">
+                        lat <span style="color: red">*</span>
+                    </div>
+                    <div class="inputWrap">
+                        <input type="text" required name="lat" #lat="ngModel" [(ngModel)]="vendorDetail.lat"
+                            class="form-control">
+                            <div *ngIf="lat.touched && lat.invalid">
+                                <div class="validation" *ngIf="lat.errors['required']">
+                                  Please Enter Lat Value
+                                </div>
+                              </div>
+                        </div>
+                </div>
 
+                <div class="rowWrap">
+                    <div class="labelWrap">
+                        lng <span style="color: red">*</span>
+                    </div>
+                    <div class="inputWrap">
+                        <input type="text" required name="lng" #lng="ngModel" [(ngModel)]="vendorDetail.lng"
+                            class="form-control">
+                            <div *ngIf="lng.touched && lng.invalid">
+                                <div class="validation" *ngIf="lng.errors['required']">
+                                  Please Enter Lng Value
+                                </div>
+                              </div>
+                        </div>
+                </div>
                 <div class="buttonWrap">
                     <div class="buttonWrapMemory">
-                        <button class="btn btn-primary">{{_buttonText}}</button>
+                        <button class="btn btn-primary" [disabled]="!addVendor.form.valid" >{{_buttonText}}</button>
                     </div>
                 </div>
             </form>
         </div>
+    </div>
+    <div class="main" (click)="dropdownClose()" *ngIf="isDropdown">
     </div>
 </div>
