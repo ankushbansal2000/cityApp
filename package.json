@@ -22,7 +22,7 @@
     "@angular/router": "~8.2.14",
     "@babel/compat-data": "^7.8.0",
     "@babel/polyfill": "^7.8.7",
-    "class-transformer": "^0.2.3",
+    "class-transformer": "^0.3.1",
     "core-js": "^2.6.11",
     "font-awesome": "^4.7.0",
     "moment": "^2.24.0",
