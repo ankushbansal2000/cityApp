@@ -1,19 +1,33 @@
 .mainDivWrap{
-    float: left;
     background-color: #ffffffe0;
     width: 100%;
     border-bottom: 1px solid #8080802e;
     position: fixed;
     top: 0px;
     z-index: 2;
+    min-height: 55px;
+    max-height: 55px;
+    display: flex;
+    align-items: center;
 }
-
-.mainDivWrap h3{
-    float: left;
-    width: 15%;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+.logoName{
     font-size: 24px;
     color: #000000;
-    padding: 13px;
-    margin: 0px;
     border-right: 1px solid #8080802e;
+}
+.menuIcon {
+  display: none;
+}
+
+
+@media only screen and (max-width: 780px) {
+  .menuIcon{
+    display: block;
+  }
 }

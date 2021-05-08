@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Nav, NAV_MODEL } from 'src/app/config/header';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,18 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-  isAdmission: boolean;
-  constructor() { }
+  dataSource: Nav[];
+
+  constructor(
+    private router: Router
+  ) {
+    this.dataSource = NAV_MODEL;
+  }
 
   ngOnInit() {
   }
-  permissionAdmin() {
-    if(!this.isAdmission) {
-      this.isAdmission = true;
-    } else {
-      this.isAdmission = false;
-    }
 
+  updateUrl(nav){
+    this.router.navigate([nav.url]);
   }
 
 }

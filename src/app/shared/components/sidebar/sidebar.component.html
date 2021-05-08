@@ -1,33 +1,10 @@
 <div class="sidebarwrap">
-    <ul class="listwrap">
-        <li [routerLink]="['/city'] ">
-            <a>
-                <i class="fa fa-home fa-lg" aria-hidden="true"></i> City </a>
-        </li>
-        <li [routerLink]="['/master-categories'] ">
-            <a><i class="fa fa-building-o fa-lg" aria-hidden="true"></i>Master Categories</a>
-        </li>
-        <li [routerLink]="['/vendor'] ">
-            <a><i class="fa fa-vimeo fa-lg "></i>Vendor</a>
-        </li>
-        <li [routerLink]="['/service-request'] ">
-            <a><i class="fa fa-universal-access fa-lg" aria-hidden="true"></i>Service Request</a>
-        </li>
-        <li [routerLink]="['/user'] ">
-            <a><i class="fa fa-user-circle-o fa-lg" aria-hidden="true"></i>User</a>
-        </li>
-        <!--    <div class="listWrap" *ngIf="isAdmission">
-            <ul class="listwrap">
-                <li style="padding-left: 19%!important">
-                    <a [routerLink]="[ '/admitStudent'] ">
-                        <i class="fa fa-user-o fa-lg"></i>Admit Student</a>
-                </li>
-                <li style="padding-left: 19%!important">
-                    <a [routerLink]="[ '/currentBatch'] ">
-                        <i class="fa fa-user-o fa-lg"></i>Current Batch</a>
-                </li>
-            </ul>
-        </div>
-        -->
-    </ul>
+  <ul class="listwrap">
+    <li *ngFor="let nav of dataSource" (click)="updateUrl(nav)">
+      <a>
+        <i class="fa fa-lg" aria-hidden="true" [ngClass]="nav.faIcon"></i>
+        {{ nav.name }}
+      </a>
+    </li>
+  </ul>
 </div>

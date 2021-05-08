@@ -14,17 +14,17 @@ import { BaseComponent } from 'src/app/framework/BaseCompo';
 export class CityComponent extends BaseComponent implements OnInit {
   citylist: CityDetail[];
   cityDetail: Array<CityDetail>;
-  constructor(private service: CommonServices) { 
+  constructor(private service: CommonServices) {
     super(service);
   }
 number : string = '9a199959-ea10-490a-b2ae-207bba19462b';
   ngOnInit() {
-    this.getAllCity();
-  } 
+  //  this.getAllCity();
+  }
 
   getAllCity() {
     this.downloadData(ApiGenerator.getAllCity());
-  } 
+  }
   deleteCity(id: number) {
     this.downloadData(ApiGenerator.deleteCityRequest(id));
   }

@@ -12,6 +12,7 @@ const routes: Routes = [
       { path: "vendor", loadChildren: "./vendor/vendor.module#VendorModule" },
       { path: "service-request", loadChildren: "./service-request/service-request.module#ServiceRequestModule" },
       { path: "user", loadChildren: "./user/user.module#UserModule" },
+      { path: "shops", loadChildren: "./shops/shops.module#ShopsModule" },
     ]
   }
 ];

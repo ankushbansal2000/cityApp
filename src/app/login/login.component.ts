@@ -28,7 +28,9 @@ export class LoginComponent extends BaseComponent implements OnInit {
   }
 
   onLogin(loginDetail: LoginDetail) {
-    this.downloadData(ApiGenerator.postLoginApi(this.loginDetail));
+    sessionStorage.setItem('token', 'a');
+    this.router.navigate(["/city"]);
+  //  this.downloadData(ApiGenerator.postLoginApi(this.loginDetail));
   }
 
   onResponseReceived(taskCode: TaskCode, response: any) {

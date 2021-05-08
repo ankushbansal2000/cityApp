@@ -9,10 +9,8 @@ import { Router } from '@angular/router';
 })
 export class LayoutComponent implements OnInit {
 
-
-
   public static routerRef: Router;
-  constructor(public router: Router) { 
+  constructor(public router: Router) {
     LayoutComponent.routerRef = this.router;
   }
 
